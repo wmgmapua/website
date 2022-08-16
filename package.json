@@ -1,0 +1,9 @@
+{
+  "name": "@wmgmapua/website",
+  "version": "0.1.0",
+  "description": "Webmasters Guild Mapua website",
+  "main": "index.js",
+  "repository": "https://github.com/wmgmapua/website.git",
+  "author": "Matteu <matteugt@gmail.com>",
+  "private": true
+}
