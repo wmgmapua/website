@@ -1,9 +1,22 @@
 {
-  "name": "@wmgmapua/website",
+  "name": "wmg-website",
   "version": "0.1.0",
-  "description": "Webmasters Guild Mapua website",
-  "main": "index.js",
-  "repository": "https://github.com/wmgmapua/website.git",
-  "author": "Matteu <matteugt@gmail.com>",
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@matteusan/sentro": "0.1.23",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.23.1",
+    "eslint-config-next": "12.3.0",
+    "sass": "1.54.9"
+  }
 }

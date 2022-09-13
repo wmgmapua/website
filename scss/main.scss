@@ -1,0 +1,8 @@
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'wmg');
+
+:root {
+  @include sentro.token-config(
+    $primary: #000,
+    $secondary: red,
+  );
+}
