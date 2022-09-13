@@ -7,7 +7,7 @@ interface WMGButtonProps {
 const WMGButton: React.FC<WMGButtonProps> = () => {
   return (
     <div>
-      //
+      {/**/}
     </div>
   );
 };
