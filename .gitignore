@@ -38,3 +38,6 @@ next-env.d.ts
 # workspaces
 /.idea
 /.vscode
+
+# dump
+/.dump
