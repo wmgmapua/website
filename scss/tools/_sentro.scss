@@ -1,0 +1,5 @@
+@use 'node_modules/@matteusan/sentro';
+
+@function to-rem($px) {
+  @return sentro.px-to-rem($px);
+}

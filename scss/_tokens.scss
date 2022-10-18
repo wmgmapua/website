@@ -1,0 +1,151 @@
+@use 'tools';
+@use 'sass:map';
+
+$tokens: (
+  'wmg-white': (
+    200: #fff,
+    300: #f5f5f5,
+    400: #e0e0e0,
+    600: #9e9e9e,
+    800: #616161,
+    'ink': #000,
+  ),
+  'wmg-blue': (
+    200: #9bacbe,
+    300: #546579,
+    400: #2d3e50,
+    600: #0f1722,
+    800: #06090d,
+    'ink': #fff
+  ),
+  'wmg-red': (
+    200: #ff8d8d,
+    300: #ec4f4f,
+    400: #c41b1b,
+    600: #8d0c0c,
+    800: #5b0000,
+    'ink': #fff
+  ),
+  'wmg-black-alpha': (
+    'default': rgba(0, 0, 0, .12),
+    'ink': rgba(0, 0, 0, .37),
+  ),
+  'wmg-white-alpha': (
+    'default': rgba(255, 255, 255, .12),
+    'ink': rgba(255, 255, 255, .37),
+  ),
+  'spacing': (
+    'none': 0,
+    'xs': tools.to-rem(4px),
+    'sm': tools.to-rem(8px),
+    'md': tools.to-rem(16px),
+    'lg': tools.to-rem(24px),
+    'xl': tools.to-rem(32px),
+    '2xl': tools.to-rem(48px),
+    '3xl': tools.to-rem(64px),
+    '4xl': tools.to-rem(80px),
+    '5xl': tools.to-rem(96px),
+    '6xl': tools.to-rem(112px),
+    'auto': auto
+  ),
+  'el-spacing': (
+    'none': 0,
+    'xs': 0.1rem,
+    'sm': 0.3rem,
+    'md': 0.7rem,
+    'lg': 1.2rem,
+    'xl': 2.3rem,
+    '2xl': 3.4rem,
+    '3xl': 4.5rem,
+    '4xl': 6.1rem,
+    '5xl': 8.2rem,
+    '6xl': 12.3rem,
+    'auto': auto
+  ),
+  'radius': (
+    'none': 0,
+    'xs': 0.1rem,
+    'sm': 0.3rem,
+    'md': 0.5rem,
+    'lg': 0.7rem,
+    'xl': 1.2rem,
+    '2xl': 2.3rem,
+    '3xl': 3.4rem,
+    '4xl': 4.5rem,
+    '5xl': 6.1rem,
+    '6xl': 8.2rem,
+    'pill': 5000px,
+    'circle': 50%,
+  ),
+  'dimension': (
+    'none': 0,
+    'xs': tools.to-rem(277px),
+    'sm': tools.to-rem(320px),
+    'md': tools.to-rem(640px),
+    'lg': tools.to-rem(890px),
+    'xl': tools.to-rem(1077px),
+    'sprite': tools.to-rem(32px),
+    'full': 100%,
+  ),
+  'breakpoint': (
+    'none': 0,
+    'xs': 277px,
+    'sm': 320px,
+    'md': 640px,
+    'lg': 890px,
+    'xl': 1077px,
+    'sprite': 32px,
+  ),
+  'border': (
+    'none': 0,
+    'xs': 1px,
+    'sm': 3px,
+    'md': 5px,
+    'lg': 7px,
+    'xl': 11px,
+  ),
+  'shadow': (
+    'none': 0 0 0 rgba(0 0 0 / 0),
+    'xs': 0 0.1rem 0.3rem var(--gs-shadow-color),
+    'sm': 0 0.3rem 0.5rem var(--gs-shadow-color),
+    'md': 0 0.7rem 1.2rem var(--gs-shadow-color),
+    'lg': 0 1.2rem 1.5rem var(--gs-shadow-color),
+    'xl': 0 1.7rem 2.1rem var(--gs-shadow-color),
+    '2xl': 0 2.3rem 3.5rem var(--gs-shadow-color),
+    '3xl': 0 3.5rem 4.7rem var(--gs-shadow-color),
+    '4xl': 0 4.7rem 5.2rem var(--gs-shadow-color),
+    '5xl': 0 5.2rem 6.5rem var(--gs-shadow-color),
+    '6xl': 0 6.7rem 7.3rem var(--gs-shadow-color),
+  ),
+  'family': (
+    'sans': ('Montserrat', sans-serif),
+    'mono': ('Jetbrains Mono', monospace),
+  ),
+  'size': (
+    'xs': tools.to-rem(12px),
+    'sm': tools.to-rem(16px),
+    'md': tools.to-rem(20px),
+    'lg': tools.to-rem(25px),
+    'xl': tools.to-rem(30px),
+    '2xl': tools.to-rem(36px),
+    '3xl': tools.to-rem(42px),
+    '4xl': tools.to-rem(49px),
+    '5xl': tools.to-rem(57px),
+    '6xl': tools.to-rem(66px),
+  ),
+  'weight': (
+    'light': 200,
+    'normal': 400,
+    'bold': 700,
+    'black': 900,
+  ),
+  'line-height': (
+    'broad': 2,
+    'normal': 1.5,
+    'condensed': 1.25,
+  ),
+);
+
+@function primitive-token-get($query...) {
+  @return map.get($tokens, $query...);
+}
