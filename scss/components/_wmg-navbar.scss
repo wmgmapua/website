@@ -1,0 +1,32 @@
+@use 'node_modules/@matteusan/sentro';
+
+@mixin render() {
+  .wmg-navbar {
+    .wmg-navbar__wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      
+      & > * + * {
+        margin-left: sentro.token-get('padding-sm');
+      }
+    }
+    
+    .wmg-button.is-inverted {
+      @include sentro.key-bind('button-padding', sentro.token-get('padding-xs') sentro.token-get('padding-sm'));
+      @include sentro.key-bind('button-size', sentro.token-get('size-xs'));
+      @include sentro.key-bind('button-weight', sentro.token-get('weight-normal'));
+      
+      &.is-active {
+        @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('primary-400'), 20%));
+        @include sentro.key-bind('button-weight', sentro.token-get('weight-bold'));
+        @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('primary-400'), 2%));
+      }
+      
+      @include sentro.breakpoint-create('medium') {
+        @include sentro.key-bind('button-padding', sentro.token-get('padding-sm') sentro.token-get('padding-md'));
+      }
+    }
+  }
+}

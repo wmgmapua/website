@@ -47,4 +47,95 @@
 
 html {
   box-sizing: border-box;
+  font-size: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.5;
+}
+
+@include wmg-banner.render();
+@include wmg-button.render();
+@include wmg-header.render();
+@include wmg-navbar.render();
+
+main.content-wrap {
+  width: calc(100% - 30px);
+  max-width: 1077px;
+  margin: 0 auto;
+  padding: 35px 0;
+}
+
+
+// Error pages:
+.absolute-center {
+  width: calc(100vw - 30px);
+  max-width: 560px;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+}
+
+.error {
+  background-color: var(--wmg-theme-error-400);
+  color: var(--wmg-theme-error-ink);
+  padding: var(--wmg-theme-padding-lg) var(--wmg-theme-padding-xl);
+  border-radius: var(--wmg-theme-radius-md);
+  box-shadow: 0 3px 20px 1px rgba(#000, 70%);
+  
+  .error__title {
+    text-align: center;
+    font-size: var(--wmg-theme-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--wmg-theme-margin-md);
+  }
+  
+  .error__description {
+    font-size: var(--wmg-theme-size-sm);
+    
+    & > p + p {
+      margin-top: var(--wmg-theme-margin-sm);
+    }
+  
+    code {
+      display: inline-block;
+      padding: 0 var(--wmg-theme-padding-sm);
+      background: var(--wmg-theme-error-600);
+      color: var(--wmg-theme-accent-ink);
+      font-family: var(--wmg-theme-family-code);
+    }
+    
+    a {
+      text-decoration: underline;
+      
+      &:hover {
+        background: rgba(sentro.token-get-raw('accent-ink'), 20%);
+      }
+    }
+  }
+  
+  .error__actions {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--wmg-theme-margin-sm);
+    justify-content: flex-end;
+    margin-top: var(--wmg-theme-margin-md);
+  }
 }

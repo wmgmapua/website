@@ -1,0 +1,83 @@
+@use 'node_modules/@matteusan/sentro';
+
+@mixin color-variant($color) {
+  &:not(.is-disabled) {
+    &:not(:disabled) {
+      @include sentro.key-bind('button-fill', rgba(0 0 0 / 0));
+      @include sentro.key-bind('button-ink', sentro.token-get('#{$color}-400'));
+      @include sentro.key-bind('button-border', rgba(0 0 0 / 0));
+      
+      &:hover,
+      &:focus {
+        @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('#{$color}-400'), 20%));
+        @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('#{$color}-400'), 2%));
+      }
+      
+      &:active {
+        @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('#{$color}-400'), 30%));
+        @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('#{$color}-400'), 3%));
+      }
+    }
+  }
+  
+  &:disabled,
+  &.is-disabled {
+    @include sentro.key-bind('button-fill', rgba(0 0 0 / 0));
+    @include sentro.key-bind('button-ink', sentro.token-get('disabled-ink'));
+    @include sentro.key-bind('button-border', rgba(0 0 0 / 0));
+  }
+  
+  &.is-outlined {
+    &:not(.is-disabled) {
+      &:not(:disabled) {
+        @include sentro.key-bind('button-fill', rgba(0 0 0 / 0));
+        @include sentro.key-bind('button-ink', sentro.token-get('#{$color}-400'));
+        @include sentro.key-bind('button-border', sentro.token-get('#{$color}-400'));
+        
+        &:hover,
+        &:focus {
+          @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('#{$color}-400'), 20%));
+        }
+        
+        &:active {
+          @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('#{$color}-400'), 30%));
+        }
+      }
+    }
+    
+    &:disabled,
+    &.is-disabled {
+      @include sentro.key-bind('button-fill', rgba(0 0 0 / 0));
+      @include sentro.key-bind('button-ink', sentro.token-get('disabled-ink'));
+      @include sentro.key-bind('button-border', sentro.token-get('disabled-ink'));
+    }
+  }
+  
+  &.is-filled {
+    &:not(.is-disabled) {
+      &:not(:disabled) {
+        @include sentro.key-bind('button-fill', sentro.token-get('#{$color}-400'));
+        @include sentro.key-bind('button-ink', sentro.token-get('#{$color}-ink'));
+        @include sentro.key-bind('button-border', sentro.token-get('#{$color}-400'));
+        
+        &:hover,
+        &:focus {
+          @include sentro.key-bind('button-fill', sentro.token-get('#{$color}-400'));
+          @include sentro.key-bind('button-border', sentro.token-get('#{$color}-400'));
+        }
+        
+        &:active {
+          @include sentro.key-bind('button-fill', sentro.token-get('#{$color}-300'));
+          @include sentro.key-bind('button-border', sentro.token-get('#{$color}-300'));
+        }
+      }
+    }
+    
+    &:disabled,
+    &.is-disabled {
+      @include sentro.key-bind('button-fill', sentro.token-get('disabled'));
+      @include sentro.key-bind('button-ink', sentro.token-get('disabled-ink'));
+      @include sentro.key-bind('button-border', sentro.token-get('disabled'));
+    }
+  }
+}

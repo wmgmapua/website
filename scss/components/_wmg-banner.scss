@@ -1,0 +1,110 @@
+@use 'node_modules/@matteusan/sentro';
+
+@mixin render() {
+  .wmg-banner {
+    width: 100%;
+    height: 67vh;
+    display: grid;
+    padding-top: 55px;
+    place-content: center;
+    position: relative;
+    color: sentro.token-get('accent-ink');
+    
+    .wmg-media {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+    }
+    
+    .wmg-banner__wrapper {
+      width: calc(100% - 30px);
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      padding: sentro.token-get('padding-md') sentro.token-get('padding-lg');
+      border-radius: sentro.token-get('radius-sm');
+      background: rgba(sentro.token-get-raw('accent-400'), 85%);
+      box-shadow: sentro.key-create('banner-shadow-placement', 0 0) rgba(sentro.token-get-raw('accent-800'), 77%);
+      transition: all var(--wmg-transition-time) ease;
+      transform: sentro.key-create('banner-rotation', none);
+      
+      @include sentro.breakpoint-create('large') {
+        width: 100%;
+        padding: sentro.token-get('padding-xl') sentro.token-get('padding-2xl');
+        
+        &.is-aligned-left {
+          @include sentro.key-bind('banner-action-alignment', start);
+          @include sentro.key-bind('banner-text-alignment', left);
+          @include sentro.key-bind('banner-shadow-placement', -8px 8px);
+          @include sentro.key-bind('banner-rotation', rotate3d(20, 10, 0, 20deg));
+          @include sentro.key-bind('banner-action-shadow-placement', -3px 3px);
+          left: -25vw;
+          
+          &:hover {
+            @include sentro.key-bind('banner-shadow-placement', -3px 3px);
+            @include sentro.key-bind('banner-action-shadow-placement', 0 0);
+          }
+        }
+        
+        &.is-aligned-center {
+          @include sentro.key-bind('banner-action-alignment', center);
+          @include sentro.key-bind('banner-text-alignment', center);
+          @include sentro.key-bind('banner-shadow-placement', 0 8px 0 3px);
+          @include sentro.key-bind('banner-rotation', rotate3d(20, 0, 0, -20deg));
+          @include sentro.key-bind('banner-action-shadow-placement', 0 3px);
+          
+          &:hover {
+            @include sentro.key-bind('banner-shadow-placement', 0 3px 0 1px);
+            @include sentro.key-bind('banner-action-shadow-placement', 0 0);
+          }
+        }
+        
+        &.is-aligned-right {
+          @include sentro.key-bind('banner-action-alignment', flex-end);
+          @include sentro.key-bind('banner-text-alignment', right);
+          @include sentro.key-bind('banner-shadow-placement', 8px 8px);
+          @include sentro.key-bind('banner-rotation', rotate3d(-20, 10, 0, -20deg));
+          @include sentro.key-bind('banner-action-shadow-placement', 3px 3px);
+          right: -25vw;
+          
+          &:hover {
+            @include sentro.key-bind('banner-shadow-placement', 3px 3px);
+          }
+        }
+      }
+      
+      &:hover {
+        transform: rotate3d(1, 1, 1, 0deg);
+      }
+      
+      .wmg-banner__title {
+        text-align: sentro.key-create('banner-text-alignment', center);
+        font-size: sentro.token-get('size-lg');
+        font-weight: sentro.token-get('weight-bold');
+        
+        @include sentro.breakpoint-create('large') {
+          font-size: sentro.token-get('size-xl');
+        }
+      }
+      
+      .wmg-banner__subtitle {
+        text-align: sentro.key-create('banner-text-alignment', center);
+      }
+      
+      .wmg-banner__action {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: sentro.key-create('banner-action-alignment', center);
+        gap: sentro.token-get('margin-sm');
+        margin-top: sentro.token-get('margin-md');
+        
+        > .wmg-button {
+          box-shadow: sentro.key-create('banner-action-shadow-placement', 0 0) sentro.token-get('primary-ink');
+        }
+      }
+    }
+  }
+}

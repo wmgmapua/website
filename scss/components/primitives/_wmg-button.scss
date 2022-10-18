@@ -1,0 +1,50 @@
+@use 'node_modules/@matteusan/sentro';
+@use '../helpers/wmg-button-mixins' as mixins;
+
+@mixin render() {
+  .wmg-button {
+    width: auto;
+    min-width: 69px;
+    max-width: max-content;
+    
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    user-select: none;
+    overflow: visible;
+    vertical-align: middle;
+    
+    cursor: pointer;
+    outline: sentro.key-create('button-outline', none);
+    
+    -webkit-appearance: caret;
+    @include sentro.prefix(transition, all var(--wmg-transition-time) ease);
+    
+    padding: sentro.key-create('button-padding', #{sentro.token-get('padding-sm')} #{sentro.token-get('padding-md')});
+    border-radius: sentro.key-create('button-radius', sentro.token-get('radius-sm'));
+  
+    background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
+    color: sentro.key-create('button-ink', sentro.token-get('accent-400'));
+    border: 1px solid sentro.key-create('button-border', rgba(0 0 0 / 0));
+  
+    .wmg-button__label {
+      font-family: sentro.key-create('button-family', sentro.token-get('family-global'));
+      font-size: sentro.key-create('button-size', sentro.token-get('size-sm'));
+      font-weight: sentro.key-create('button-weight', sentro.token-get('weight-bold'));
+      text-align: center;
+    }
+  
+    .wmg-button__icon {
+      //
+    }
+  
+    @include mixins.color-variant('accent');
+    
+    &.is-inverted {
+      @include mixins.color-variant('primary');
+    }
+  }
+}
