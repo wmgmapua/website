@@ -1,16 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
-import WMGHeader from '../components/WMGHeader';
-import { WMGNavbar, WMGNavItem } from '../components/WMGNavbar';
+
 import { site } from '../constants/site';
 
-interface DefaultLayoutProps {
+interface BlankLayoutProps {
   title: string;
   description?: string;
   children?: React.ReactNode;
 }
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, children }) => {
+const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, children }) => {
   return (
     <>
       <Head>
@@ -35,17 +34,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
 
         <meta name="theme-color" content={ site.themeColor } />
       </Head>
-      <WMGHeader>
-        <WMGNavbar>
-          <WMGNavItem link="/">Home</WMGNavItem>
-          <WMGNavItem link="/about">About</WMGNavItem>
-          <WMGNavItem link="/events">Events</WMGNavItem>
-          <WMGNavItem link="/contact">Contact</WMGNavItem>
-        </WMGNavbar>
-      </WMGHeader>
       { children }
     </>
   );
 };
 
-export default DefaultLayout;
+export default BlankLayout;
