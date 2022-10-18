@@ -15,7 +15,7 @@ const NotFoundPage: NextPage = () => {
           <h1 className="error__title">404 - Not Found</h1>
           <div className="error__description">
             <p>The page you were trying to look for does not exist.</p>
-            <p>Click the <code>'Go back'</code> button to go back to the previous page. If you think this error is a mistake, please contact one of the WMG Mapua admins.</p>
+            <p>Click the <code>Go back</code> button to go back to the previous page. If you think this error is a mistake, please contact one of the WMG Mapua admins.</p>
           </div>
           <div className="error__actions">
             <WMGButton type="filled inverted" onClick={() => router.back()}>Go back</WMGButton>
