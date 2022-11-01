@@ -2,30 +2,55 @@
 
 @mixin render() {
   .wmg-navbar {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+  
+    @include sentro.breakpoint-create('medium') {
+      justify-content: flex-end;
+    }
+  
     .wmg-navbar__wrapper {
-      display: flex;
-      flex-flow: row nowrap;
+      display: none;
+      flex-flow: row wrap;
       justify-content: center;
       align-items: center;
+      gap: sentro.token-get('padding-sm');
+      background-color: sentro.token-get('accent-400');
+      padding: sentro.token-get('padding-md') sentro.token-get('padding-lg');
+  
+      &.is-visible {
+        display: flex;
+      }
       
-      & > * + * {
-        margin-left: sentro.token-get('padding-sm');
+      &.is-large {
+        display: none !important;
+        flex-basis: 100%;
+        flex-flow: row nowrap !important;
+        padding: 0 !important;
+        
+        @include sentro.breakpoint-create('medium') {
+          display: flex !important;
+          gap: sentro.token-get('padding-md');
+          justify-content: flex-end;
+        }
       }
     }
-    
+  
     .wmg-button.is-inverted {
       @include sentro.key-bind('button-padding', sentro.token-get('padding-xs') sentro.token-get('padding-sm'));
       @include sentro.key-bind('button-size', sentro.token-get('size-xs'));
       @include sentro.key-bind('button-weight', sentro.token-get('weight-normal'));
-      
+    
       &.is-active {
         @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('primary-400'), 20%));
         @include sentro.key-bind('button-weight', sentro.token-get('weight-bold'));
         @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('primary-400'), 2%));
       }
-      
+    
       @include sentro.breakpoint-create('medium') {
-        @include sentro.key-bind('button-padding', sentro.token-get('padding-sm') sentro.token-get('padding-md'));
+        @include sentro.key-bind('button-padding', sentro.token-get('padding-sm') sentro.token-get('padding-md') !important);
       }
     }
   }

@@ -2,23 +2,31 @@
 
 @mixin render() {
   .wmg-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     background-color: sentro.token-get('accent-400');
     color: sentro.token-get('accent-ink');
     padding: sentro.token-get('padding-md') sentro.token-get('padding-lg');
-    z-index: 100;
     
     .wmg-header__wrapper {
-      width: calc(100% - 30px);
+      width: 100%;
       max-width: 1077px;
       margin: 0 auto;
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
+      flex-flow: row nowrap;
+      justify-content: space-between;
       align-items: center;
+      
+      .wmg-button.is-inverted {
+        @include sentro.key-bind('button-min-width', 100%);
+        @include sentro.key-bind('button-padding', sentro.token-get('padding-xs') sentro.token-get('padding-sm'));
+        @include sentro.key-bind('button-size', sentro.token-get('size-xs'));
+        @include sentro.key-bind('button-weight', sentro.token-get('weight-normal'));
+  
+        @include sentro.breakpoint-create('medium') {
+          &.is-js-nav-trigger {
+            display: none !important;
+          }
+        }
+      }
       
       @include sentro.breakpoint-create('medium') {
         flex-flow: row nowrap;
@@ -27,11 +35,11 @@
       
       .wmg-header__masthead {
         display: grid;
-        place-items: center;
-        margin-bottom: sentro.token-get('margin-sm');
+        flex-basis: 300%;
+        place-items: flex-start;
         
         @include sentro.breakpoint-create('medium') {
-          margin-bottom: 0;
+          flex-basis: 50%;
         }
         
         h2 {

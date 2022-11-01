@@ -1,16 +1,18 @@
-import React from 'react';
-import WMGButton from './primitives/WMGButton';
+import React, { useState } from 'react';
 import { NextRouter, useRouter } from 'next/router';
+
+import WMGButton from './primitives/WMGButton';
+import { MdClose, MdMenu } from 'react-icons/md';
 
 interface WMGNavItemProps {
   link: string;
   children?: React.ReactNode;
 }
 
-export const WMGNavbar: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+export const WMGNavbar: React.FC<{ isLarge?: boolean, trigger?: boolean, children?: React.ReactNode }> = ({ isLarge, trigger = true, children }) => {
   return (
     <nav className="wmg-navbar">
-      <ul className="wmg-navbar__wrapper">
+      <ul className={`wmg-navbar__wrapper${trigger ? ' is-visible' : ''}${isLarge ? ' is-large' : ''}`}>
         { children }
       </ul>
     </nav>

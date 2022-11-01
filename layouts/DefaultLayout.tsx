@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import WMGHeader from '../components/WMGHeader';
 import { WMGNavbar, WMGNavItem } from '../components/WMGNavbar';
 import { site } from '../constants/site';
+import WMGButton from '../components/primitives/WMGButton';
+import { MdClose, MdMenu } from 'react-icons/md';
 
 interface DefaultLayoutProps {
   title: string;
@@ -11,6 +13,7 @@ interface DefaultLayoutProps {
 }
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, children }) => {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   return (
     <>
       <Head>
@@ -35,14 +38,27 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
 
         <meta name="theme-color" content={ site.themeColor } />
       </Head>
-      <WMGHeader>
-        <WMGNavbar>
+      <section style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000}}>
+        <WMGHeader>
+          <WMGNavbar isLarge>
+            <WMGNavItem link="/">Home</WMGNavItem>
+            <WMGNavItem link="/about">About</WMGNavItem>
+            <WMGNavItem link="/events">Events</WMGNavItem>
+            <WMGNavItem link="/contact">Contact</WMGNavItem>
+            <WMGButton type="inverted filled" link="/apply">Apply now</WMGButton>
+          </WMGNavbar>
+          <WMGButton onClick={() => setIsNavbarOpen(!isNavbarOpen)} type="inverted js-nav-trigger"
+                     icon={isNavbarOpen ? <MdClose/> : <MdMenu/>}
+          />
+        </WMGHeader>
+        <WMGNavbar trigger={isNavbarOpen}>
           <WMGNavItem link="/">Home</WMGNavItem>
           <WMGNavItem link="/about">About</WMGNavItem>
           <WMGNavItem link="/events">Events</WMGNavItem>
           <WMGNavItem link="/contact">Contact</WMGNavItem>
+          <WMGButton type="inverted filled" link="/apply">Apply now</WMGButton>
         </WMGNavbar>
-      </WMGHeader>
+      </section>
       { children }
     </>
   );
