@@ -70,6 +70,29 @@ a {
   line-height: 1.5;
 }
 
+a.wmg-link {
+  display: inline-block;
+  color: sentro.token-get('accent-400');
+  text-decoration: underline;
+  border-radius: sentro.token-get('radius-xs');
+  @include sentro.prefix(transition, all var(--wmg-transition-time) ease);
+  
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background: sentro.token-get('accent-400');
+    color: sentro.token-get('accent-ink');
+    box-shadow: 0 2px 0 1px sentro.token-get('accent-600');
+    padding: sentro.token-get('padding-xs');
+    transform: translateY(-8px);
+  }
+  
+  &:active {
+    box-shadow: 0 0 0 0;
+    transform: translateY(-6px);
+  }
+}
+
 @include wmg-banner.render();
 @include wmg-button.render();
 @include wmg-header.render();

@@ -36,9 +36,11 @@ const WMGButton: React.FC<WMGButtonProps> = ({label, icon, type, link, onClick, 
     );
   }
 
+  const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
+
   return (
     <Link href={link} passHref>
-      <a aria-label={label} role="link" className={`wmg-button${type ? ' ' + _assertType(type) : ''}`} target={ link.charAt(0) !== '/' ? '_blank' : '_self' }>
+      <a aria-label={label} role="link" className={`wmg-button${type ? ' ' + _assertType(type) : ''}`} target={isLinkExternal ? '_blank' : '_self'}>
         {ButtonBase}
       </a>
     </Link>
