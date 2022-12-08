@@ -47,7 +47,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
             <WMGNavItem link="/contact">Contact</WMGNavItem>
             <WMGButton type="inverted filled" link="/apply">Apply now</WMGButton>
           </WMGNavbar>
-          <WMGButton onClick={() => setIsNavbarOpen(!isNavbarOpen)} type="inverted js-nav-trigger"
+          <WMGButton onClick={() => setIsNavbarOpen(!isNavbarOpen)} type="icon-only inverted js-nav-trigger"
                      icon={isNavbarOpen ? <MdClose/> : <MdMenu/>}
           />
         </WMGHeader>

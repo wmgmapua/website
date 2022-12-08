@@ -29,6 +29,11 @@
     background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
     color: sentro.key-create('button-ink', sentro.token-get('accent-400'));
     border: 1px solid sentro.key-create('button-border', rgba(0 0 0 / 0));
+    
+    &.is-icon-only {
+      min-width: 0;
+      padding: sentro.token-get('padding-sm');
+    }
   
     .wmg-button__label {
       font-family: sentro.key-create('button-family', sentro.token-get('family-global'));
@@ -38,7 +43,15 @@
     }
   
     .wmg-button__icon {
-      //
+      position: relative;
+      width: 20px;
+      height: 20px;
+      
+      > * {
+        position: relative;
+        width: 20px;
+        height: 20px;
+      }
     }
   
     @include mixins.color-variant('accent');
