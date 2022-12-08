@@ -7,6 +7,7 @@
 @use 'components/wmg-banner';
 @use 'components/wmg-header';
 @use 'components/wmg-navbar';
+@use 'components/wmg-officer';
 
 :root {
   @include sentro.token-config(
@@ -26,6 +27,7 @@
     $size: primitive-token-get('size'),
   );
   --wmg-transition-time: 0.2s;
+  --wmg-shadow-color: rgba(0 0 0 / 20%);
 }
 
 @include sentro.breakpoint-config((
@@ -93,18 +95,34 @@ a.wmg-link {
   }
 }
 
-@include wmg-banner.render();
-@include wmg-button.render();
-@include wmg-header.render();
-@include wmg-navbar.render();
-
 main.content-wrap {
   width: calc(100% - 30px);
   max-width: 1077px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: var(--wmg-content-wrap-pt, 75px) 0 35px 0;
 }
 
+@include wmg-banner.render();
+@include wmg-button.render();
+@include wmg-header.render();
+@include wmg-navbar.render();
+@include wmg-officer.render();
+
+.wmg-title-bar {
+  $size-mapping: (
+    h1: 'xl',
+    h2: 'lg',
+    h3: 'md',
+  );
+  
+  @each $_, $size in $size-mapping {
+    &.is-#{$size} {
+      font-size: primitive-token-get('size', $size);
+    }
+  }
+}
+
+@tailwind utilities;
 
 // Error pages:
 .absolute-center {
