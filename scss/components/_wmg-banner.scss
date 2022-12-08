@@ -10,6 +10,10 @@
     position: relative;
     color: sentro.token-get('accent-ink');
     
+    + main.content-wrap {
+      --wmg-content-wrap-pt: 35px;
+    }
+    
     .wmg-media {
       width: 100%;
       height: 100%;

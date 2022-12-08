@@ -12,6 +12,7 @@
     }
   
     .wmg-navbar__wrapper {
+      width: 100%;
       display: none;
       flex-flow: row wrap;
       justify-content: center;
@@ -40,7 +41,7 @@
   
     .wmg-button.is-inverted {
       @include sentro.key-bind('button-padding', sentro.token-get('padding-xs') sentro.token-get('padding-sm'));
-      @include sentro.key-bind('button-size', sentro.token-get('size-xs'));
+      @include sentro.key-bind('button-size', sentro.token-get('size-sm'));
       @include sentro.key-bind('button-weight', sentro.token-get('weight-normal'));
     
       &.is-active {
