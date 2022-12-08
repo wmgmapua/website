@@ -1,0 +1,46 @@
+@use 'node_modules/@matteusan/sentro';
+@use '../tokens' as *; // $tokens is located here.
+
+@mixin render() {
+  .wmg-officer {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: sentro.token-get('padding-md');
+    padding: sentro.token-get('padding-lg');
+    border-radius: sentro.token-get('radius-sm');
+    border: 1px solid sentro.token-get('accent-400');
+    box-shadow: -4px 4px sentro.token-get('accent-800');
+    transition: all var(--wmg-transition-time) ease;
+    
+    @include sentro.breakpoint-create('large') {
+      &:hover {
+        transform: translateY(-7px);
+        box-shadow: -7px 11px sentro.token-get('accent-800');
+      }
+    }
+  
+    .wmg-officer__media {
+      width: 90px;
+      height: 90px;
+      border-radius: sentro.token-get('radius-pill');
+      border: 1px solid sentro.token-get('accent-400');
+      object-fit: cover;
+      object-position: center;
+    }
+  
+    .wmg-officer__info {
+      padding: sentro.token-get('padding-sm') 0;
+    
+      .wmg-officer__name {
+        font-size: sentro.token-get('size-md');
+        font-weight: sentro.token-get('weight-bold');
+      }
+    }
+  
+    .wmg-officer__socials {
+      display: flex;
+      flex-flow: row wrap;
+      gap: sentro.token-get('padding-sm');
+    }
+  }
+}
